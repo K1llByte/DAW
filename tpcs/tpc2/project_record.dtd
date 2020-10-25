@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT project_record (header,workteam,abstract,deliverables)>
+
+<!ATTLIST project_record
+    name CDATA #IMPLIED>
+
+<!ELEMENT header (key_name,title,subtitle?,begin_date,end_date,supervisor)>
+<!ELEMENT key_name (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT subtitle (#PCDATA)>
+<!ELEMENT begin_date (#PCDATA)>
+<!ELEMENT end_date (#PCDATA)>
+<!ELEMENT supervisor (#PCDATA)>
+<!ATTLIST supervisor
+    href CDATA #IMPLIED>
+
+<!ELEMENT workteam (member)+>
+<!ELEMENT member (#PCDATA)>
+<!ATTLIST member
+    id ID #REQUIRED
+    github CDATA #IMPLIED
+    site CDATA #IMPLIED
+    email CDATA #IMPLIED>
+
+<!ELEMENT abstract (#PCDATA|p|b|i|a)*>
+<!ELEMENT a (#PCDATA)>
+<!ATTLIST a
+    href CDATA #IMPLIED>
+<!ELEMENT p (#PCDATA|b|i|a)*>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT i (#PCDATA)>
+
+<!ELEMENT deliverables (reference)*>
+<!ELEMENT reference (#PCDATA)>
+<!ATTLIST reference
+    href CDATA #REQUIRED>

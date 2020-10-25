@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project_record>
+    <header>
+        <key_name>DAW_TPC2_DTD</key_name>
+        <title>Schema e Stylesheet para tratamento de teses em XML</title>
+        <subtitle>XML File format</subtitle>
+        <begin_date>21 Outubro 2020</begin_date>
+        <end_date>28 Outubro 2020</end_date>
+        <supervisor href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+
+    </header>
+    
+    <workteam>
+        <member id="a85272" github="https://github.comk1llbyte/" email="a85272@alunos.uminho.pt">
+            Jorge Mota
+        </member>
+    </workteam>
+    
+    <abstract>
+    <p>O XML, validado pelo schema, juntamente com o potente processamento via XSLT, permite dispor de facilidades acrescidas no tratamento de informação de uma forma <b>standard e partilhável</b>. Estas são, além de outras evidentes vantagens, as que abrem caminho a uma mais que provável evolução desta tecnologia nos círculos comerciais e de investigação. Outro facto importante, diz respeito à substituição de interfaces EDI por XML em aplicações bussiness oriented.</p>
+    <p>O trabalho apresentado contempla um <b>schema, uma stylesheet, e a instância do schema</b> em XML. A instância é o próprio relatório.</p>
+    <p>O trabalho pretende definir uma <i>estrutura expedita e funcional</i>, passível de ser aplicada a um trabalho descritivo, como por exemplo uma tese. Não é objectivo do trabalho criar uma implementação sistemática de todos os objectos possíveis, mas sim criar algumas utilizações mais comuns para exemplificar a potência destas linguagens</p>
+    <p>Ficam neste trabalho em aberto algumas ideias, a serem aplicadas mais tarde a quando da escrita da tese, ou pré-tese, porque na verdade o facto de manter o documento num formato exportável para vários formatos, para várias plataformas, e anotado, garante qualquer tratamento no futuro, constituindo uma vantagem muito importante a ter em conta.</p>
+    </abstract>
+
+    <deliverables>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.html">Report (HTML version)</reference>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.xml">Report (XML version)</reference>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.xsd">XML Schema Definition (XSD)</reference>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/schema_doc.html">XML Schema Documentation (HTML)</reference>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.xslt">XSLT StyleSheet file (XSLT)</reference>
+        <reference href="http://www.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.spp">XmlSpy Project Definitions (XML)</reference>
+    </deliverables>
+</project_record>
