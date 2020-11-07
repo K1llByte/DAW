@@ -15,7 +15,6 @@ fs.readdir(PAGES_DIR,(err,files) => {
     NUM_ARQ_FILES = files.filter(e => e.match(/^arq(([1-9]+)|([1-9]0+)).html$/)).length;
 });
 
-
 function serve_file(res,filename,code=200)
 {
     fs.readFile(filename,(err,data) =>
@@ -38,7 +37,7 @@ try {
             http_code = 200;
             serve_file(res,PAGES_DIR + 'index.html');
         }
-        else if(req.url.match(/^\/arqs\/(([1-9]+)|([1-9]0+))$/))
+        else if(req.url.match(/^\/arq\/(([1-9]+)|([1-9]0+))$/))
         {
             let arq_num = parseInt(req.url.substring(6, req.url.length));
             if(arq_num > NUM_ARQ_FILES)

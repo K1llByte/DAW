@@ -1,0 +1,36 @@
+<pr>
+    <meta>
+        <key>TPC4</key>
+        <title>TPC4 Project Record</title>
+        <bdate>4 de Novembro 2020</bdate>
+        <edate>11 de Novembro 2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+
+    <team>
+        <member id="a85272">
+            <name>Jorge Mota</name>
+            <email>a85272@alunos.uminho.pt</email>
+        </member>
+    </team>
+
+    <abstract>
+        <p></p>
+        <p>This project record was validated with the dtd provided in class</p>
+    </abstract>
+
+    <deliverables>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/project_record.dtd">
+            Project Record (DTD)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/pr.xml">
+            TPC4 Project Record (XML)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/server.js">
+            Server (JS)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/logger.js">
+            Server Logger (JS)
+        </link>
+    </deliverables>
+</pr>
