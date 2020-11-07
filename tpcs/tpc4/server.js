@@ -39,7 +39,7 @@ try {
         }
         else if(req.url.match(/^\/arq\/(([1-9]+)|([1-9]0+))$/))
         {
-            let arq_num = parseInt(req.url.substring(6, req.url.length));
+            let arq_num = parseInt(req.url.substring(5, req.url.length));
             if(arq_num > NUM_ARQ_FILES)
             {
                 logger.info("URL matched but number doesn't exist");
