@@ -28,8 +28,6 @@ function serve_file(res,filename,code=200)
 try {
     http.createServer((req,res) =>
     {
-        console.log(req.method + " "+req.url + " "+"Todays date");
-
         let http_code;
 
         if(req.url.match(/^((\/index)(\.html)?)|\/$/)) 
