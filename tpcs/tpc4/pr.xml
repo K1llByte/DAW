@@ -15,7 +15,8 @@
     </team>
 
     <abstract>
-        <p></p>
+        <p>The Arq database was changed so that the resulting pages were registered as arq{number}.html</p>
+        <p>A nodejs http server was created to serve the generated pages with custom url paths (/arq/{number}) and a 404 not found page if the url doesn't match any. A module for a logger class was also provided for logs consistent printing</p>
         <p>This project record was validated with the dtd provided in class</p>
     </abstract>
 

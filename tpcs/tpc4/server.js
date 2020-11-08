@@ -30,7 +30,7 @@ try {
     {
         let http_code;
 
-        if(req.url.match(/^((\/index)(\.html)?)|\/$/)) 
+        if(req.url.match(/^(((\/index)(\.html)?)|\/)$/)) 
         {
             http_code = 200;
             serve_file(res,PAGES_DIR + 'index.html');
