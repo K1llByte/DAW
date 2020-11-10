@@ -13,9 +13,9 @@ const HTTP_HEADER={'Content-Type':'text/html;charset=utf-8;'};
 var NUM_ARQ_FILES;
 fs.readdir(PAGES_DIR,(err,files) => {
     NUM_ARQ_FILES = files.filter(e => e.match(/^arq(([1-9]+)|([1-9]0+)).html$/)).length;
+    logger.info(`${NUM_ARQ_FILES}`);
 });
 
-logger.info(NUM_ARQ_FILES);
 
 function serve_file(res,filename,code=200)
 {
@@ -37,7 +37,7 @@ try {
             http_code = 200;
             serve_file(res,PAGES_DIR + 'index.html');
         }
-        else if(req.url.match(/^\/arq\/(([1-9]+)|([1-9]0+))$/))
+        else if(req.url.match(/^\/arq\/([1-9][0-9]*)$/))
         {
             let arq_num = parseInt(req.url.substring(5, req.url.length));
             if(arq_num > NUM_ARQ_FILES)
@@ -64,5 +64,6 @@ try {
 catch(err) {
     logger.error(err);
 }
+
 
 logger.info(`Server opened in ${PORT}`);
