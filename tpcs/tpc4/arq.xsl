@@ -5,7 +5,7 @@
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     
     <xsl:template match="/">
-        <xsl:result-document href="tpcsite/index.html">
+        <xsl:result-document href="pages/index.html">
             <html>
                 <head>
                     <!-- <meta charset="UTF-8"/> -->
