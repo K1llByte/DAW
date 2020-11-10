@@ -15,6 +15,8 @@ fs.readdir(PAGES_DIR,(err,files) => {
     NUM_ARQ_FILES = files.filter(e => e.match(/^arq(([1-9]+)|([1-9]0+)).html$/)).length;
 });
 
+logger.info(NUM_ARQ_FILES);
+
 function serve_file(res,filename,code=200)
 {
     fs.readFile(filename,(err,data) =>
