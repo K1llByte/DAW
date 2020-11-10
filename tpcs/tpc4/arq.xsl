@@ -5,7 +5,7 @@
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     
     <xsl:template match="/">
-        <xsl:result-document href="pages/index.html">
+        <xsl:result-document href="tpcsite/index.html">
             <html>
                 <head>
                     <!-- <meta charset="UTF-8"/> -->
@@ -78,7 +78,7 @@
                     <p><b>Instrumento</b> <xsl:value-of select="inst"/> </p>
                     <p><b>Duração</b> <xsl:value-of select="duracao"/> </p> -->
                     <address><a href="{$i -1}">Anterior</a></address>
-                    <address><a href="index.html#i{$i}">Voltar ao índice</a></address>
+                    <address><a href="../index.html#i{$i}">Voltar ao índice</a></address>
                     <address><a href="{$i +1}">Próximo</a></address>
                     
                 </body>

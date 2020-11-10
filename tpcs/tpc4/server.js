@@ -13,7 +13,6 @@ const HTTP_HEADER={'Content-Type':'text/html;charset=utf-8;'};
 var NUM_ARQ_FILES;
 fs.readdir(PAGES_DIR,(err,files) => {
     NUM_ARQ_FILES = files.filter(e => e.match(/^arq(([1-9]+)|([1-9]0+)).html$/)).length;
-    logger.info(`${NUM_ARQ_FILES}`);
 });
 
 
