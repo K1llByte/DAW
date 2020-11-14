@@ -1,0 +1,37 @@
+<pr>
+    <meta>
+        <key>TPC4</key>
+        <title>TPC4 Project Record</title>
+        <bdate>4 de Novembro 2020</bdate>
+        <edate>11 de Novembro 2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+
+    <team>
+        <member id="a85272">
+            <name>Jorge Mota</name>
+            <email>a85272@alunos.uminho.pt</email>
+        </member>
+    </team>
+
+    <abstract>
+        <p>The Arq database was changed so that the resulting pages were registered as arq{number}.html</p>
+        <p>A nodejs http server was created to serve the generated pages with custom url paths (/arq/{number}) and a 404 not found page if the url doesn't match any. A module for a logger class was also provided for logs consistent printing</p>
+        <p>This project record was validated with the dtd provided in class</p>
+    </abstract>
+
+    <deliverables>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/project_record.dtd">
+            Project Record (DTD)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/pr.xml">
+            TPC4 Project Record (XML)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/server.js">
+            Server (JS)
+        </link>
+        <link url="https://github.com/K1llByte/daw/blob/master/tpcs/tpc4/logger.js">
+            Server Logger (JS)
+        </link>
+    </deliverables>
+</pr>
