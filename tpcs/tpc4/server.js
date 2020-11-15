@@ -54,7 +54,7 @@ try {
         else
         {
             http_code = 404;
-            serve_file(res,PAGES_DIR + '404.html',http_code);
+            serve_file(res,http_code);
         }
         logger.request(req.method, req.url, http_code);
 
