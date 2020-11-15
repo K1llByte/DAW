@@ -10,22 +10,35 @@ logger.info(`Starting server ...`);
 const PORT=4000
 const HTTP_HEADER={'Content-Type':'text/html;charset=utf-8;'};
 
+// =============== Aux Functions =============== //
 
-function gen_404(res,http_code)
+function serve_404(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
     res.write("404 NOT FOUND");
     res.end();
 }
 
-function gen_index(res,http_code)
+function serve_index(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
-    res.write("");
+    res.write('<!DOCTYPE html>');
+    res.write('<html>');
+    res.write('<head></head>');
+    res.write('<body>');
+    res.write('<h1>Escola de Música</h1>');
+    res.write('<h3>Items</h3>');
+    res.write('<ul>');
+    res.write('<li><a href="http://localhost:4000/alunos">Alunos</a></li>');
+    res.write('<li><a href="http://localhost:4000/cursos">Cursos</a></li>');
+    res.write('<li><a href="http://localhost:4000/instrumentos">Instrumentos</a></li>');
+    res.write('</ul>');
+    res.write('</body>');
+    res.write('</html>');
     res.end();
 }
 
-function gen_alunos(res,http_code)
+function serve_alunos(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
     axios.get('http://localhost:3000/alunos')
@@ -40,7 +53,7 @@ function gen_alunos(res,http_code)
     });
 }
 
-function gen_cursos(res,http_code)
+function serve_cursos(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
     axios.get('http://localhost:3000/cursos')
@@ -55,7 +68,7 @@ function gen_cursos(res,http_code)
     });
 }
 
-function gen_instrumentos(res,http_code)
+function serve_instrumentos(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
     axios.get('http://localhost:3000/instrumentos')
@@ -70,6 +83,8 @@ function gen_instrumentos(res,http_code)
     });
 }
 
+// =============== ==== =============== //
+
 try {
     http.createServer((req,res) =>
     {
@@ -77,24 +92,28 @@ try {
 
         if(req.url.match(/^(((\/index)(\.html)?)|\/)$/))
         {
-            gen_index(res,http_code);
+            serve_index(res,http_code);
         }
         else if(req.url == '/alunos')
         {
-            gen_alunos(res,http_code);
+            serve_alunos(res,http_code);
+        }
+        else if(req.url.match(/\/alunos\/[a-zA-Z0-9]+/))
+        {
+            serve_alunos(res,http_code);
         }
         else if(req.url == '/cursos')
         {
-            gen_cursos(res,http_code);
+            serve_cursos(res,http_code);
         }
         else if(req.url == '/instrumentos')
         {
-            gen_instrumentos(res,http_code);
+            serve_instrumentos(res,http_code);
         }
         else
         {
             http_code = 404;
-            gen_404(res,http_code);
+            serve_404(res,http_code);
         }
         logger.request(req.method, req.url, http_code);
 
@@ -103,6 +122,5 @@ try {
 catch(err) {
     logger.error(err);
 }
-
 
 logger.info(`Server opened in ${PORT}`);
