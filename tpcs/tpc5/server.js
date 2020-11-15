@@ -44,7 +44,7 @@ function serve_alunos(res,http_code)
     axios.get('http://localhost:3000/alunos')
     .then(api_res => {
         api_res.data.forEach(aluno => {
-            res.write(`<b>${aluno['id']}</b> <br/>`);
+            res.write(`<b><a href="http://localhost:4000/alunos/${aluno['id']}">${aluno['id']}</a></b> <br/>`);
         });
         res.end();
     })
@@ -77,7 +77,7 @@ function serve_cursos(res,http_code)
     axios.get('http://localhost:3000/cursos')
     .then(api_res => {
         api_res.data.forEach(curso => {
-            res.write(`<b>${curso['id']}</b> <br/>`);
+            res.write(`<b><a href="http://localhost:4000/alunos/${curso['id']}">${curso['id']}</a></b> <br/>`);
         });
         res.end();
     })
@@ -108,7 +108,7 @@ function serve_instrumentos(res,http_code)
     axios.get('http://localhost:3000/instrumentos')
     .then(api_res => {
         api_res.data.forEach(instrumento => {
-            res.write(`<b>${instrumento['id']}</b><br/>`);
+            res.write(`<b><a href="http://localhost:4000/alunos/${instrumento['id']}">${instrumento['id']}</a></b><br/>`);
         });
         res.end();
     })
