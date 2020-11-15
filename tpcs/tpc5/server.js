@@ -53,6 +53,24 @@ function serve_alunos(res,http_code)
     });
 }
 
+function serve_aluno(res,aluno,http_code)
+{
+    res.writeHead(http_code,HTTP_HEADER);
+    axios.get(`http://localhost:3000/alunos/${aluno}`)
+    .then(api_res => {
+        res.write(`<b>${api_res.data['id']}</b> <br/>`);
+        res.write(`<b>Nome:</b> ${api_res.data['nome']} <br/>`);
+        res.write(`<b>Data Nascimento:</b> ${api_res.data['dataNasc']} <br/>`);
+        res.write(`<b>Curso:</b> ${api_res.data['curso']} <br/>`);
+        res.write(`<b>Ano Curso:</b> ${api_res.data['anoCurso']} <br/>`);
+        res.write(`<b>Instrumento:</b> ${api_res.data['instrumento']} <br/>`);
+        res.end();
+    })
+    .catch(error => {
+        console.log('ERROR:',error);
+    });
+}
+
 function serve_cursos(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
@@ -68,6 +86,22 @@ function serve_cursos(res,http_code)
     });
 }
 
+function serve_curso(res,curso,http_code)
+{
+    res.writeHead(http_code,HTTP_HEADER);
+    axios.get(`http://localhost:3000/cursos/${curso}`)
+    .then(api_res => {
+        res.write(`<b>${api_res.data['id']}</b> <br/>`);
+        res.write(`<b>Designação:</b> ${api_res.data['designacao']} <br/>`);
+        res.write(`<b>Data Nascimento:</b> ${api_res.data['duracao']} <br/>`);
+        res.write(`<b>Instrumento:</b> ${api_res.data['instrumento']['id']} - ${api_res.data['instrumento']['#text']} <br/>`);
+        res.end();
+    })
+    .catch(error => {
+        console.log('ERROR:',error);
+    });
+}
+
 function serve_instrumentos(res,http_code)
 {
     res.writeHead(http_code,HTTP_HEADER);
@@ -76,6 +110,20 @@ function serve_instrumentos(res,http_code)
         api_res.data.forEach(instrumento => {
             res.write(`<b>${instrumento['id']}</b><br/>`);
         });
+        res.end();
+    })
+    .catch(error => {
+        console.log('ERROR:',error);
+    });
+}
+
+function serve_instrumento(res,instrumento,http_code)
+{
+    res.writeHead(http_code,HTTP_HEADER);
+    axios.get(`http://localhost:3000/instrumentos/${instrumento}`)
+    .then(api_res => {
+        res.write(`<b>${api_res.data['id']}</b> <br/>`);
+        res.write(`<b>Designação:</b> ${api_res.data['#text']} <br/>`);
         res.end();
     })
     .catch(error => {
@@ -100,15 +148,23 @@ try {
         }
         else if(req.url.match(/\/alunos\/[a-zA-Z0-9]+/))
         {
-            serve_alunos(res,http_code);
+            serve_aluno(res,req.url.substring(8, req.url.length),http_code);
         }
         else if(req.url == '/cursos')
         {
             serve_cursos(res,http_code);
         }
+        else if(req.url.match(/\/cursos\/[a-zA-Z0-9]+/))
+        {
+            serve_curso(res,req.url.substring(8, req.url.length),http_code);
+        }
         else if(req.url == '/instrumentos')
         {
             serve_instrumentos(res,http_code);
+        }
+        else if(req.url.match(/\/instrumentos\/[a-zA-Z0-9]+/))
+        {
+            serve_instrumento(res,req.url.substring(14, req.url.length),http_code);
         }
         else
         {
