@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO</title>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="favicon.png"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+
+    <style>
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+
+        div {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+    </style>
+
+
+    <body>
+        <div> <!-- New Task -->
+            
+            <form action="/" method="post" id="todo_form">
+                <!-- Description   -->
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description"/>
+
+                <!-- Deadline  -->
+                <label for="deadline">Deadline</label>
+                <input type="text" id="deadline" name="deadline"/>
+
+                <!-- Author -->
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author"/>
+
+                <!-- Type  -->
+                <label for="type">Type</label>
+                <select id="type" name="type">
+                    <option value="Active">Active</option>
+                    <option value="Complete">Complete</option>
+                </select>
+
+                <input type="submit" value="Add">
+            </form>
+            
+        </div>
+        <br/>
+
+        <div> <!-- Active Tasks -->
+            <table class="w3-table-all w3-xlarge" id="active">
+                <tr>
+                    <th style="width: 50%">Active</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>Deadline</th>
+                    <th>Author</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Finish TPC6 DAW</td>
+                    <td>24/11/2020</td>
+                    <td>25/11/2020</td>
+                    <td>Author</td>
+                    <td>Type</td>
+                    <td>
+                        <button onclick="set_edit_mode('Finish TPC6 DAW','24/11/2020','25/11/2020','Author','Type')" class="w3-button w3-green">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        
+        <div> <!-- Complete Tasks -->
+            <table class="w3-table-all w3-xlarge" id="completed">
+                <tr>
+                    <th style="width: 50%">Completed</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>Deadline</th>
+                    <th>Author</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><del>Finish TPC6 DAW</del></td>
+                    <td><del>24/11/2020</del></td>
+                    <td><del>25/11/2020</del></td>
+                    <td><del>Author</del></td>
+                    <td><del>Type</del></td>
+                    <td>
+                        <button onclick="set_edit_mode()" class="w3-button w3-green">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+
+    <script>
+        function set_edit_mode(description, created, deadline, author, type)
+        {
+            
+            document
+            .getElementById("todo_form")
+            .setAttribute("method", "put");
+
+            document
+            .getElementById("description")
+            .value = description;
+
+            document
+            .getElementById("deadline")
+            .value = deadline;
+
+            document
+            .getElementById("author")
+            .value = author;
+
+            documentz
+            .getElementById("type")
+            .value = type;
+        
+
+            //var table = document.getElementById("completed");
+
+            /* var i;
+            for (i = 0 ; i < table.rows.length ; ++i)
+            {
+                console.log(i);
+                if(i != 0 && i != 1)
+                {
+                    var columns = table.rows[i].getElementsByTagName("td");
+                    console.log(columns.length);
+                    console.log(columns[5]
+                        .getElementsByTagName("button")[0]
+                        .clicked)
+
+                    console.log("buttons:",columns[5]
+                        .getElementsByTagName("button")[0].innerHTML);
+                    if(columns[5]
+                        .getElementsByTagName("button")[0]
+                        .clicked == true)
+                    {
+                        console.log('IS TRUEE FINALLY!');
+                        columns[0].innerHTML = "AAAAAAAAAAAAAAAAA";
+                    }
+                }
+            } */
+        }
+    </script>
+
+    </html>

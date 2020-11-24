@@ -1,0 +1,25 @@
+{
+    "tasks" : [
+        {
+            "description" : "Task 1",
+            "created" : "01/01/2020",
+            "deadline" : "02/01/2020",
+            "author" : "a85272",
+            "type" : "Active"
+        },
+        {
+            "description" : "Task 3",
+            "created" : "01/01/2020",
+            "deadline" : "02/01/2020",
+            "author" : "a85272",
+            "type" : "Active"
+        },
+        {
+            "description" : "Task 2",
+            "created" : "01/01/2020",
+            "deadline" : "02/01/2020",
+            "author" : "a85272",
+            "type" : "Completed"
+        }
+    ]
+}
