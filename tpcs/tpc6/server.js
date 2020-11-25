@@ -107,11 +107,19 @@ function serve_index(res,http_code)
         <div> <!-- New Task -->
             <form>
                 <form action="/" method="post">
-                    <!-- Description   -->
+                    <!-- ID -->
+                    <label for="id">Identifier</label>
+                    <input type="text" id="id" name="id"/>
+
+                    <!-- Description -->
                     <label for="description">Description</label>
                     <input type="text" id="description" name="description"/>
 
-                    <!-- Deadline  -->
+                    <!-- Created -->
+                    <label for="created">Created</label>
+                    <input type="text" id="created" name="created"/>
+
+                    <!-- Deadline -->
                     <label for="deadline">Deadline</label>
                     <input type="text" id="deadline" name="deadline"/>
 
@@ -119,7 +127,7 @@ function serve_index(res,http_code)
                     <label for="author">Author</label>
                     <input type="text" id="author" name="author"/>
 
-                    <!-- Type  -->
+                    <!-- Type -->
                     <label for="type">Type</label>
                     <select id="type" name="type">
                         <option value="Active">Active</option>
@@ -141,8 +149,10 @@ function serve_index(res,http_code)
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 <tr>
+                    <th>ID</th>
                     <th>Description</th>
                     <th>Created</th>
                     <th>Deadline</th>
@@ -155,13 +165,14 @@ function serve_index(res,http_code)
     active_array.forEach(e => {
         html += `
         <tr>
+            <td>${e['id']}</td>
             <td>${e['description']}</td>
             <td>${e['created']}</td>
             <td>${e['deadline']}</td>
             <td>${e['author']}</td>
             <td>${e['type']}</td>
             <td>
-                <button onclick="set_edit_mode('${e['description']}','${e['created']}','${e['deadline']}','${e['author']}','${e['type']}')" class="w3-button w3-green">Edit</button>
+                <button onclick="set_edit_mode('${e['id']}','${e['description']}','${e['created']}','${e['deadline']}','${e['author']}','${e['type']}')" class="w3-button w3-green">Edit</button>
             </td>
         </tr>`
     });
@@ -194,13 +205,14 @@ function serve_index(res,http_code)
     completed_array.forEach(e => {
         html += `
         <tr>
+            <td>${e['id']}</td>
             <td>${e['description']}</td>
             <td>${e['created']}</td>
             <td>${e['deadline']}</td>
             <td>${e['author']}</td>
             <td>${e['type']}</td>
             <td>
-                <button onclick="set_edit_mode('${e['description']}','${e['created']}','${e['deadline']}','${e['author']}','${e['type']}')" class="w3-button w3-green">Edit</button>
+                <button onclick="set_edit_mode('${e['description']}','${e['id']}','${e['created']}','${e['deadline']}','${e['author']}','${e['type']}')" class="w3-button w3-green">Edit</button>
             </td>
         </tr>`
     });
@@ -208,7 +220,7 @@ function serve_index(res,http_code)
         </div>
     </body>
     <script>
-        function set_edit_mode(description, created, deadline, author, type)
+        function set_edit_mode(id,description, created, deadline, author, type)
         {
             
             document
