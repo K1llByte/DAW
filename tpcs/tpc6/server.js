@@ -26,6 +26,13 @@ function serve_405(res,http_code)
     res.end();
 }
 
+function serve_500(res,http_code)
+{
+    res.writeHead(http_code,HTTP_HEADER);
+    res.write("500 Internal Server Error");
+    res.end();
+}
+
 function serve_file(res,filename,http_code)
 {
     fs.readFile(filename,(err,data) =>
@@ -37,6 +44,26 @@ function serve_file(res,filename,http_code)
 }
 
 
+function fetch_data(request, callback){
+    if(request.headers['content-type'] == 'application/x-www-form-urlencoded')
+    {
+        let body = ''
+        request.on('data', block => {
+            logger.info("Its ok");
+            body += block.toString();
+        })
+        request.on('end', () => {
+            logger.info("Its NOT ok");
+            console.log(body);
+            callback(parse(body));
+        })
+    }
+    else
+    {
+        logger.error("CONTENT TYPE MALFORMED")
+    }
+}
+
 
 // =============== HTML =============== //
 
@@ -45,12 +72,12 @@ function serve_index(res,http_code)
     // Fetch Data
 
     let active_array = [];
-    axios.get(`http://localhost:3000/tasks?type=Completed`)
+    axios.get(`http://localhost:3000/tasks?type=Active`)
     .then(db_res => {
         active_array = db_res.data;
 
         let completed_array = [];
-        axios.get(`http://localhost:3000/tasks?type=Active`)
+        axios.get(`http://localhost:3000/tasks?type=Completed`)
         .then(db_res => {
             completed_array = db_res.data;
 
@@ -105,38 +132,38 @@ function serve_index(res,http_code)
 
     <body>
         <div> <!-- New Task -->
-            <form>
-                <form action="/" method="post">
-                    <!-- ID -->
-                    <label for="id">Identifier</label>
-                    <input type="text" id="id" name="id"/>
+            
+            <form action="/tasks" method="POST">
+                <!-- ID -->
+                <label for="id">Identifier</label>
+                <input type="text" id="id" name="id"/>
 
-                    <!-- Description -->
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description"/>
+                <!-- Description -->
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description"/>
 
-                    <!-- Created -->
-                    <label for="created">Created</label>
-                    <input type="text" id="created" name="created"/>
+                <!-- Created -->
+                <label for="created">Created</label>
+                <input type="text" id="created" name="created"/>
 
-                    <!-- Deadline -->
-                    <label for="deadline">Deadline</label>
-                    <input type="text" id="deadline" name="deadline"/>
+                <!-- Deadline -->
+                <label for="deadline">Deadline</label>
+                <input type="text" id="deadline" name="deadline"/>
 
-                    <!-- Author -->
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author"/>
+                <!-- Author -->
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author"/>
 
-                    <!-- Type -->
-                    <label for="type">Type</label>
-                    <select id="type" name="type">
-                        <option value="Active">Active</option>
-                        <option value="Complete">Complete</option>
-                    </select>
+                <!-- Type -->
+                <label for="type">Type</label>
+                <select id="type" name="type">
+                    <option value="Active">Active</option>
+                    <option value="Complete">Complete</option>
+                </select>
 
-                    <input type="submit" value="Add">
-                </form>
+                <input type="submit" value="Add">
             </form>
+            
         </div>
         <br/>
 
@@ -191,9 +218,10 @@ function serve_index(res,http_code)
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
-                <tr>
-                    
+                <tr>    
+                    <th>ID</th>
                     <th>Description</th>
                     <th>Created</th>
                     <th>Deadline</th>
@@ -225,7 +253,7 @@ function serve_index(res,http_code)
             
             document
             .getElementById("todo_form")
-            .setAttribute("method", "put");
+            .setAttribute("method", "PUT");
 
             document
             .getElementById("description")
@@ -294,6 +322,27 @@ try {
         {
             if(req.url == "/tasks")
             {
+                // {
+                //     "id" : "1",
+                //     "description" : "Task 1",
+                //     "created" : "01/01/2020",
+                //     "deadline" : "02/01/2020",
+                //     "author" : "a85272",
+                //     "type" : "Active"
+                // }
+
+                fetch_data(req, data => {
+                    axios.post(`http://localhost:3000/`/* , */)
+                    .then(db_res => {
+                        serve_index(res,http_code);
+                    })
+                    .catch(error => {
+                        logger.error(error);
+                        http_code = 500;
+                        serve_500(res,http_code);
+                    });
+                });
+
                 serve_index(res,http_code);
             }
         }
