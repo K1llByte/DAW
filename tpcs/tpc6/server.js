@@ -49,14 +49,13 @@ function fetch_data(request, callback){
     {
         let body = ''
         request.on('data', block => {
-            logger.info("Its ok");
             body += block.toString();
-        })
+        });
+
         request.on('end', () => {
-            logger.info("Its NOT ok");
             console.log(body);
             callback(parse(body));
-        })
+        });
     }
     else
     {
@@ -133,7 +132,7 @@ function serve_index(res,http_code)
     <body>
         <div> <!-- New Task -->
             
-            <form action="/tasks" method="POST">
+            <form id="todo_form" action="/tasks" method="POST">
                 <!-- ID -->
                 <label for="id">Identifier</label>
                 <input type="text" id="id" name="id"/>
@@ -161,7 +160,7 @@ function serve_index(res,http_code)
                     <option value="Complete">Complete</option>
                 </select>
 
-                <input type="submit" value="Add">
+                <input id="submit" type="submit" value="Add">
             </form>
             
         </div>
@@ -248,16 +247,41 @@ function serve_index(res,http_code)
         </div>
     </body>
     <script>
-        function set_edit_mode(id,description, created, deadline, author, type)
+        function set_edit_mode(id, description, created, deadline, author, type)
         {
             
             document
             .getElementById("todo_form")
             .setAttribute("method", "PUT");
 
-            document
+            var submit_button = document
+            .getElementById("submit");
+
+            submit_button.setAttribute("class","w3-button w3-blue");
+            submit_button.setAttribute("value","Edit");
+
+            const ids_arr = [ "id", "description", "created", "deadline", "author", "type" ];
+            const vars_arr = [ id, description, created, deadline, author, type ];
+
+            var i;
+            for(i = 0 ; i < ids_arr.length ; ++i)
+            {
+                document
+                .getElementById(ids_arr[i])
+                .value = vars_arr[i];
+            }
+
+            /* document
             .getElementById("description")
             .value = description;
+
+            document
+            .getElementById("id")
+            .value = id;
+
+            document
+            .getElementById("id")
+            .value = id;
 
             document
             .getElementById("deadline")
@@ -269,7 +293,7 @@ function serve_index(res,http_code)
 
             documentz
             .getElementById("type")
-            .value = type;
+            .value = type; */
         }
     </script>
     </html>
@@ -322,17 +346,8 @@ try {
         {
             if(req.url == "/tasks")
             {
-                // {
-                //     "id" : "1",
-                //     "description" : "Task 1",
-                //     "created" : "01/01/2020",
-                //     "deadline" : "02/01/2020",
-                //     "author" : "a85272",
-                //     "type" : "Active"
-                // }
-
                 fetch_data(req, data => {
-                    axios.post(`http://localhost:3000/`/* , */)
+                    axios.post(`http://localhost:3000/tasks`, data)
                     .then(db_res => {
                         serve_index(res,http_code);
                     })

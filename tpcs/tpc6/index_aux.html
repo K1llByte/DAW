@@ -44,29 +44,59 @@
 
     <body>
         <div> <!-- New Task -->
+            <table>
+                <tr>
+                    <th>
+                        <form action="/" method="POST" id="todo_form">
+                            <!-- Description   -->
+                            <label for="description">Description</label>
+                            <input type="text" id="description" name="description"/>
             
-            <form action="/" method="post" id="todo_form">
-                <!-- Description   -->
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description"/>
-
-                <!-- Deadline  -->
-                <label for="deadline">Deadline</label>
-                <input type="text" id="deadline" name="deadline"/>
-
-                <!-- Author -->
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author"/>
-
-                <!-- Type  -->
-                <label for="type">Type</label>
-                <select id="type" name="type">
-                    <option value="Active">Active</option>
-                    <option value="Complete">Complete</option>
-                </select>
-
-                <input type="submit" value="Add">
-            </form>
+                            <!-- Deadline  -->
+                            <label for="deadline">Deadline</label>
+                            <input type="text" id="deadline" name="deadline"/>
+            
+                            <!-- Author -->
+                            <label for="author">Author</label>
+                            <input type="text" id="author" name="author"/>
+            
+                            <!-- Type  -->
+                            <label for="type">Type</label>
+                            <select id="type" name="type">
+                                <option value="Active">Active</option>
+                                <option value="Complete">Complete</option>
+                            </select>
+            
+                            <input type="submit" value="Add">
+                        </form>
+                    </th>
+                    <th>
+                        <form action="/" method="PUT" id="todo_form">
+                            <!-- Description   -->
+                            <label for="description">Description</label>
+                            <input type="text" id="description" name="description"/>
+            
+                            <!-- Deadline  -->
+                            <label for="deadline">Deadline</label>
+                            <input type="text" id="deadline" name="deadline"/>
+            
+                            <!-- Author -->
+                            <label for="author">Author</label>
+                            <input type="text" id="author" name="author"/>
+            
+                            <!-- Type  -->
+                            <label for="type">Type</label>
+                            <select id="type" name="type">
+                                <option value="Active">Active</option>
+                                <option value="Complete">Complete</option>
+                            </select>
+            
+                            <input class="w3-button w3-blue" type="submit" value="Edit">
+                        </form>
+                    </th>
+                </tr>
+            </table>
+            
             
         </div>
         <br/>
