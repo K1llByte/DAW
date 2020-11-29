@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title Students
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class="w3-container w3-teal")
+        h2 Register new student
+
+        form(class= "w3-container", action="/students", method="post")
+            label.w3-text-white Number
+            input.w3-input.w3-border.w3-light-grey(type="text", name="number")
+
+            label.w3-text-white Name
+            input.w3-input.w3-border.w3-light-grey(type="text", name="name")
+            
+            label.w3-text-white Git
+            input.w3-input.w3-border.w3-light-grey(type="text", name="git")
+
+            br
+            table(style="align: center; width: 100%;")
+              tr
+                - var n = 1
+                while n < 9
+                  td(style="align: center;")
+                    label
+                      b= `TPC ${n}`
+                  - ++n
+              tr
+                - var n = 1
+                while n < 9
+                  td(style="align: center;")
+                    input.w3-check(type="checkbox", name=`tpc${n}`)
+                  - ++n
+
+            br
+            div(style="align: center;")
+            input.w3-btn.w3-blue-grey(type="submit", value="Add", style="margin: 3px")
+            
+            input.w3-btn.w3-blue-grey(type="reset", value="Reset", style="margin: 3px")
+            
+
+        footer(class="w3-container w3-teal")
+            address Gerado por dawApp :: 2020-Nov [
+                a(href="/students") Back]

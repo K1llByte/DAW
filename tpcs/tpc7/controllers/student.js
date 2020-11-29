@@ -16,7 +16,20 @@ module.exports.lookUp = (id) => {
         .exec()
 }
 
-module.exports.insert = student => {
+module.exports.insert = (student) => {
     var newStudent = new Student(student)
     return newStudent.save()
+}
+
+module.exports.edit = (data) => {
+    return Student
+        .update({"number":data['number']},{$set : data})
+        .exec();
+}
+
+module.exports.delete = (number) => {
+    console.log("Imma remove");
+    return Student
+        .remove({ "number" : number})
+        .exec();
 }
