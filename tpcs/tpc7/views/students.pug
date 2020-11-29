@@ -13,13 +13,13 @@ block content
               th Git
             each s in list
               tr
-                td= s.numero
-                td= s.nome
-                td= s.git
+                td
+                  a(href=`http://localhost:7700/students/${s.number}`)= s.number
+                td= s.name
+                td
+                  a(href=s.git)= s.git
       else
         .w3-container
           p There are no students...
       footer.w3-container.w3-teal
         address Gerado por dawApp :: 2020-Nov, jcr
-
-  

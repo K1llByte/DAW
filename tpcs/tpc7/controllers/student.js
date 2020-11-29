@@ -6,13 +6,13 @@ var Student = require('../models/student')
 module.exports.list = () => {
     return Student
         .find()
-        .sort({nome:1})
+        .sort({name:1})
         .exec()
 }
 
-module.exports.lookUp = id => {
+module.exports.lookUp = (id) => {
     return Student
-        .findOne({numero: id})
+        .findOne({number: id})
         .exec()
 }
 
