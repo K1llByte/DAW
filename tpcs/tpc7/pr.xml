@@ -1,0 +1,38 @@
+<pr>
+    <meta>
+        <key>TPC7</key>
+        <title>TPC7 Project Record</title>
+        <bdate>25 de Novembro 2020</bdate>
+        <edate>2 de Dezembro 2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+
+    <team>
+        <member id="a85272">
+            <name>Jorge Mota</name>
+            <email>a85272@alunos.uminho.pt</email>
+        </member>
+    </team>
+
+    <abstract>
+        <p>This TP was a completion of the work done in class. </p>
+        <p>
+        All wanted features were implemented, these include:
+        - Adding new students (<b>POST</b> /students/:number)
+        - Deleting students (<b>DELETE</b> /students/:number)
+        - Editing data from students (<b>PUT</b> /students/:number)
+        - We can also view the tpcs of a specific student (<b>GET</b> /students/:number)
+        </p>
+        <p>
+            HTML Forms don't allow other method other than GET or POST so, it was used method-override for app method translation.
+            This allows the app to receive a POST with a parameter in the query string _method with the value to override the http method.
+            With this we could implement successfully DELETE and PUT for the student data
+        </p>
+    </abstract>
+
+    <deliverables>
+        <link url="https://github.com/K1llByte/daw/tree/master/tpcs/tpc7">
+            TP7 Directory GitHub Page
+        </link>
+    </deliverables>
+</pr>
