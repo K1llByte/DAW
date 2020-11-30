@@ -7,7 +7,8 @@ html
     div(class="w3-container w3-teal")
         h2 Edit student
 
-        form(class= "w3-container", method="PUT", action=`/students/${student.number}`)
+        form(class= "w3-container", method="POST", action=`/students/${student.number}?_method=PUT`)
+            input(type="hidden" name="_method" value="POST")
             label.w3-text-white Number
             input.w3-input.w3-border.w3-light-grey(type="text", name="number", value=`${student.number}`)
 
@@ -37,8 +38,7 @@ html
                   - ++n
 
             br
-            div(style="align: center;")
-            input.w3-btn.w3-blue-grey(type="submit", formmethod="PUT", formaction=`/students/${student.number}`, value="Edit", style="margin: 3px")
+            input.w3-btn.w3-blue-grey(type="submit", value="Edit", style="margin: 3px")
 
         footer(class="w3-container w3-teal")
             address Gerado por dawApp :: 2020-Nov [

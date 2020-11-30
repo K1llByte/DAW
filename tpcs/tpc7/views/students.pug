@@ -24,11 +24,14 @@ block content
                 td
                   a(href=s.git)= s.git
                 td(style="width: 5%;")
-                  form(action=`/students/edit/${s.number}` method="get")
+                  form(method='GET', action=`/students/edit/${s.number}`)
                     input.w3-button.w3-yellow(type="submit" value="Edit")
                 td(style="width: 5%;")
-                  form(action=`/students/${s.number}` method="delete")
+                  form(method="POST" action=`/students/${s.number}?_method=DELETE`)
+                    input(type="hidden" name="_method" value="DELETE")
                     input.w3-button.w3-red(type="submit" value="Delete")
+                  //form(method='DELETE', action=`/students/${s.number}`)
+                  //  input.w3-button.w3-red(type="submit" value="Delete")
 
       else
         .w3-container
