@@ -11,12 +11,12 @@ function list_files(files)
               <link rel="icon" href="/favicon.png"/>
               <link rel="stylesheet" href="/w3.css"/>
               <script src="/jquery-3.5.1.min.js"></script>
-              <script src="/imagens.js"></script>
+              <script src="/show_image.js"></script>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
           </head>
           <body>
-              <div class="w3-card-4 modal" id="display"></div>
+              <div class="w3-modal-content w3-animate-opacity" id="display"></div>
 
               <div class="w3-container w3-teal">
                   <h2>File List</h2>
@@ -32,7 +32,7 @@ function list_files(files)
     `
     files.forEach( f => {
         html += `
-          <tr onclick='showImage(\"${f.name}", \"${f.mimetype}\", \"${f.description}\");'>
+          <tr onclick='show_image(\"${f.name}", \"${f.mimetype}\", \"${f.description}\");'>
               <td>${f.date}</td>
               <td>${f.name}</td>
               <td>${f.description}</td>
@@ -43,7 +43,8 @@ function list_files(files)
     })
     html += `
           </table>
-          <a href="/files/upload"><button type="button">Upload image</button></a>
+          
+          <a href="/files/upload"><button class="w3-button w3-block w3-teal">Add File</button></a>
       </body>
       </html>
     `
@@ -61,7 +62,7 @@ function upload_files(date)
             <link rel="icon" href="/favicon.png"/>
             <link rel="stylesheet" href="/w3.css"/>
             <script src="/jquery-3.5.1.min.js"></script>
-            <script src="/imagens.js"></script>
+            <script src="/add_upload.js"></script>
         </head>
         <body>
             <div class="w3-container w3-teal">
@@ -87,14 +88,13 @@ function upload_files(date)
                         </div>
                     </div>
                 </div>
-                <div class="w3-row w3-margin-bottom">                 
-                    <button type="button" onclick="showUpload();"> +1 </button></a>
+                <div class="w3-row w3-margin-bottom">
+                    <button class="w3-btn w3-blue-grey" type="button" onclick="add_upload();"> +1 </button></a>
+                    <input class="w3-btn w3-blue-grey" type="submit" value="Upload"/>
                 </div>
-                <input class="w3-btn w3-blue-grey" type="submit" value="Submit"/>
+                
             </form>
-            <footer class="w3-container w3-teal">
-                <address>Gerado por gImagem::DAW2020 em ${date} - [<a href="/">Voltar</a>]</address>
-            </footer>
+            
         </body>
     </html>
     `

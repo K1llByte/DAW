@@ -15,6 +15,7 @@
     </team>
 
     <abstract>
+        To allow upload of multiple files to the server, first of all we made the page generate more upload buttons dynamicly with jQuery
         
     </abstract>
 
