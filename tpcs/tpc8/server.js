@@ -46,7 +46,7 @@ app.post('/files', upload.array('myFile'), (req,res) => {
 
     for(let i = 0 ; i < req.files.length ; ++i)
     {
-        const old_path = __dirname + '/' + req.files[i].path;
+        const old_path = `${__dirname}/${req.files[i].path}`;
         const new_path = __dirname + '/static_files/uploads/' + req.files[i].originalname;
         fs.rename(old_path, new_path, (err) => {
             if(err) 

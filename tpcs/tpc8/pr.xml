@@ -15,8 +15,8 @@
     </team>
 
     <abstract>
-        To allow upload of multiple files to the server, first of all we made the page generate more upload buttons dynamicly with jQuery
-        
+        To allow upload of multiple files to the server, first of all we made the page generate more upload buttons dynamicly with jQuery.
+        When the files are uploaded to the server they are handled and registered in the json with its information.
     </abstract>
 
     <deliverables>
