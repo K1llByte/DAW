@@ -1,0 +1,26 @@
+<pr>
+    <meta>
+        <key>TPC8</key>
+        <title>TPC8 Project Record</title>
+        <bdate>1 de Dezembro 2020</bdate>
+        <edate>8 de Dezembro 2020</edate>
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+
+    <team>
+        <member id="a85272">
+            <name>Jorge Mota</name>
+            <email>a85272@alunos.uminho.pt</email>
+        </member>
+    </team>
+
+    <abstract>
+        
+    </abstract>
+
+    <deliverables>
+        <link url="https://github.com/K1llByte/daw/tree/master/tpcs/tpc8">
+            TP8 Directory GitHub Page
+        </link>
+    </deliverables>
+</pr>
