@@ -40,22 +40,23 @@ app.get('/files/download/:fname', (req,res) => {
     // TODO: REMOVE THIS CODE THIS WILL ALLOW DOWNLOAD
     // OF ANY FILESYSTEM FILE THE USER HAS ACCESS
     res.download(__dirname + '/static_files/uploads/' + req.params.fname);
-})
+});
 
 app.post('/files', upload.array('myFile'), (req,res) => {
 
+    let db_arr = jsonfile.readFileSync(FILES_JSON_DB);
     for(let i = 0 ; i < req.files.length ; ++i)
     {
         const old_path = `${__dirname}/${req.files[i].path}`;
-        const new_path = __dirname + '/static_files/uploads/' + req.files[i].originalname;
+        const new_path = `${__dirname}/static_files/uploads/${req.files[i].originalname}`;
+        
         fs.rename(old_path, new_path, (err) => {
-            if(err) 
-                throw err;
+            if(err) throw err;
         });
 
         const date = new Date().toISOString().substr(0,16);
-        var files = jsonfile.readFileSync(FILES_JSON_DB);
-        files.push(
+        
+        db_arr.push(
             {
                 date: date,
                 name: req.files[i].originalname,
@@ -64,7 +65,8 @@ app.post('/files', upload.array('myFile'), (req,res) => {
                 description: req.body.desc[i]
             }
         );
-        jsonfile.writeFileSync(FILES_JSON_DB, files);
+
+        jsonfile.writeFileSync(FILES_JSON_DB, db_arr);
     }
     res.redirect('/');
 })
